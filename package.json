@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-import-yaml",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "import yaml files inside code files. Types are generated dynamically for TS.",
   "main": "src/index.js",
   "scripts": {
