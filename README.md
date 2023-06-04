@@ -1,1 +1,1 @@
-# vite-plugin-import-yaml
+# rollup-plugin-import-yaml

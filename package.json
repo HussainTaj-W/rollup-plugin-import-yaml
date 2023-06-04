@@ -1,0 +1,41 @@
+{
+  "name": "rollup-plugin-import-yaml",
+  "version": "0.0.1",
+  "description": "import yaml files inside code files. Types are generated dynamically for TS.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier . --ignore-path .gitignore --write",
+    "prettier:check": "prettier . --ignore-path .gitignore --check"
+  },
+  "bin": {
+    "yml-def-gen": "src/bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HussainTaj-W/rollup-plugin-import-yaml.git"
+  },
+  "keywords": [
+    "vite-plugin",
+    "rollup-plugin",
+    "yaml",
+    "import",
+    "vite",
+    "rollup",
+    "typescript",
+    "ts"
+  ],
+  "author": "Hussain Taj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HussainTaj-W/rollup-plugin-import-yaml/issues"
+  },
+  "homepage": "https://github.com/HussainTaj-W/rollup-plugin-import-yaml#readme",
+  "dependencies": {
+    "glob": "^10.2.6",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  }
+}
