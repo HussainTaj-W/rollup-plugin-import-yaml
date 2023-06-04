@@ -3,14 +3,14 @@ const fs = require("fs");
 
 /**
  * Generate TypeScript declaration from data.
- * 
+ *
  * @param {any} data
  * @param {string} [indent=""]
  * @returns {string}
  * @example
  * generateTypeScriptDeclaration({ a: 1, b: "2" });
  * //=> "{ a: number; b: string; }"
- * 
+ *
  * generateTypeScriptDeclaration({ a: 1, b: "2", c: { d: true } });
  * //=> "{ a: number; b: string; c: { d: boolean; }; }"
  */
@@ -62,7 +62,7 @@ function generateTypeScriptDeclaration(data, indent = "") {
 
 /**
  * Generate type file from data.
- * 
+ *
  * @param {any} data
  * @param {string} sourceFile
  * @param {string} [encoding="utf8"]
@@ -81,7 +81,7 @@ function generateTypeFile(data, sourceFile, encoding = "utf8") {
 
 /**
  * Generate type file from yaml file.
- * 
+ *
  * @param {string} yamlFile
  * @param {string} [encoding="utf8"]
  * @example
