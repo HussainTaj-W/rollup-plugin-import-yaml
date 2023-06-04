@@ -13,7 +13,7 @@ npm i -D rollup-plugin-import-yaml
 ### (Javascript) Configure Plugin
 
 ```js
-import importYaml from "vite-plugin-import-yaml";
+import importYaml from "rollup-plugin-import-yaml";
 
 export default defineConfig(({ mode }) => {
   return {
@@ -29,7 +29,7 @@ For typescript, type declarations are generated for each YAML file and added to 
 #### vite.config.ts
 
 ```ts
-import importYaml from "vite-plugin-import-yaml";
+import importYaml from "rollup-plugin-import-yaml";
 
 export default defineConfig(({ mode }) => {
   return {
@@ -47,14 +47,14 @@ export default defineConfig(({ mode }) => {
 ```json
 {
   "compilerOptions": {
-    "types": ["vite-plugin-import-yaml/src/types"]
+    "types": ["rollup-plugin-import-yaml/src/types"]
   }
 }
 ```
 
 ### CLI / Generating Types Separately / Existing Projects
 
-If you need to generate types manually for some reason (like integrating this plugin into an existing project), you can run the `yml-def-gen` cli command.
+If you need to generate types manually for some reason (like integrating this plugin into an existing project), you can run the `yml-dec-gen` cli command.
 
 #### Install Dependency Globally
 
@@ -65,5 +65,5 @@ npm i -g rollup-plugin-import-yaml
 Then in your project directory run.
 
 ```bash
-yml-def-gen
+yml-dec-gen
 ```
