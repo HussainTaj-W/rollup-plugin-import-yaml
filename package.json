@@ -9,7 +9,7 @@
     "prettier:check": "prettier . --ignore-path .gitignore --check"
   },
   "bin": {
-    "yml-def-gen": "src/bin/cli.js"
+    "yml-dec-gen": "src/bin/cli.js"
   },
   "repository": {
     "type": "git",
