@@ -27,7 +27,9 @@ function followReferences({ yamlData, encoding = "utf8", root = "./" } = {}) {
 
   if (matches) {
     for (const match of matches) {
-      const includeTagMatch = match.match(/\(\( include (.+) \)\)/);
+      const includeTagMatch = match
+        .replace(/\r\n|\r|\n/gm, "")
+        .match(/\(\( include (.+) \)\)/);
       let referredFile = includeTagMatch[1];
       if (!referredFile) {
         throw new Error("Include statement must have a path");

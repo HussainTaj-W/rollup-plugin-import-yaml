@@ -1,3 +1,9 @@
+# version 0.0.5
+
+_7th June 2023_
+
+- Fix: newline issue in matches.
+
 # version 0.0.4
 
 _7th June 2023_
