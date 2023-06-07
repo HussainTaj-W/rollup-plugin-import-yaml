@@ -1,6 +1,8 @@
 const yaml = require("js-yaml");
 const fs = require("fs");
 
+const { followReferences } = require("./references");
+
 /**
  * Generate TypeScript declaration from data.
  *
@@ -84,14 +86,25 @@ function generateTypeFile(data, sourceFile, encoding = "utf8") {
  *
  * @param {string} yamlFile
  * @param {string} [encoding="utf8"]
+ * @param {boolean} [shouldFollowReferences=false]
  * @example
  * generateTypeFileFromYamlFile("data.yaml");
  * //=> data.yaml.d.ts
  * //=> declare const data: { a: number; b: string; };
  * //=> export default data;
  */
-function generateTypeFileFromYamlFile(yamlFile, encoding = "utf8") {
-  const data = yaml.load(fs.readFileSync(yamlFile, encoding));
+function generateTypeFileFromYamlFile(
+  yamlFile,
+  encoding = "utf8",
+  shouldFollowReferences = false,
+  root = "./"
+) {
+  let data = fs.readFileSync(yamlFile, encoding);
+  if (shouldFollowReferences) {
+    const { yamlData } = followReferences({ yamlData: data, encoding, root });
+    data = yamlData;
+  }
+  data = yaml.load(data);
   generateTypeFile(data, yamlFile, encoding);
 }
 

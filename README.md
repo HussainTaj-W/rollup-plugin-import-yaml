@@ -67,3 +67,59 @@ Then in your project directory run.
 ```bash
 yml-dec-gen
 ```
+
+## Referencing other files
+
+This plugin has a special feature that lets you include yaml files inside other
+yaml files. This feature is disabled by default, to enable it use:
+
+```ts
+import importYaml from "rollup-plugin-import-yaml";
+
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [
+      importYaml({
+        isTS: true,
+        shouldFollowReferences: true,
+      }),
+    ],
+  };
+});
+```
+
+### Example
+
+> Input (data.yml)
+
+```yml
+list:
+  {{ include ./list.yml }}
+
+{{ include ./object.yml }}
+```
+
+> list.yml
+
+```yml
+- a
+- b
+```
+
+> object.yml
+
+```yml
+object:
+  abc: abc
+```
+
+> Output (data.yml) when imported
+
+```yml
+list:
+  - a
+  - b
+
+object:
+  abc: abc
+```

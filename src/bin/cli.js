@@ -38,12 +38,13 @@ function findYamlFiles(directory = ".", exclude = [/node_modules/]) {
 function main() {
   const directory = process.argv[2] || ".";
   const exclude = process.argv[3] ? process.argv[3].split(",") : [];
+  const shouldFollowReferences = process.argv[4] || false;
 
   const yamlFiles = findYamlFiles(directory, exclude);
 
   for (const yamlFile of yamlFiles) {
     console.log(`Generating type file for ${yamlFile}`);
-    generateTypeFileFromYamlFile(yamlFile);
+    generateTypeFileFromYamlFile(yamlFile, "utf8", shouldFollowReferences);
   }
 }
 
