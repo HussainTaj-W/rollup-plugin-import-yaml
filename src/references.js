@@ -11,7 +11,7 @@ const path = require("path");
  * @returns {Object} - YAML data and referred files.
  * @example
  * const { yamlData, referredFiles } = followReferences({
- *   yamlData: "a: 1\nb: {{ include ./data.yaml }}",
+ *   yamlData: "a: 1\nb: (( include ./data.yaml ))",
  *   encoding: "utf8",
  *   root: "./"
  * });
@@ -20,14 +20,14 @@ const path = require("path");
  *
  */
 function followReferences({ yamlData, encoding = "utf8", root = "./" } = {}) {
-  const regex = /^\s*.*{{ include .+ }}/gm;
+  const regex = /^\s*.*\(\( include .+ \)\)/gm;
   const matches = yamlData.match(regex);
 
   let referredFiles = [];
 
   if (matches) {
     for (const match of matches) {
-      const includeTagMatch = match.match(/{{ include (.+) }}/);
+      const includeTagMatch = match.match(/\(\( include (.+) \)\)/);
       let referredFile = includeTagMatch[1];
       if (!referredFile) {
         throw new Error("Include statement must have a path");

@@ -93,10 +93,9 @@ export default defineConfig(({ mode }) => {
 > Input (data.yml)
 
 ```yml
-list:
-  {{ include ./list.yml }}
+list: (( include ./list.yml ))
 
-{{ include ./object.yml }}
+object: (( include ./object.yml ))
 ```
 
 > list.yml
@@ -109,8 +108,7 @@ list:
 > object.yml
 
 ```yml
-object:
-  abc: abc
+abc: abc
 ```
 
 > Output (data.yml) when imported
