@@ -1,3 +1,9 @@
+# version 0.0.6
+
+_28th June 2023_
+
+- Feat: Add `exportResult` option to export the result of the plugin.
+
 # version 0.0.5
 
 _7th June 2023_
