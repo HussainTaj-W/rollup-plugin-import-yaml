@@ -1,6 +1,6 @@
 const yaml = require("js-yaml");
 
-const { generateTypeFile } = require("./utils");
+const { generateTypeFile, saveGeneratedYamlFile } = require("./utils");
 const { followReferences } = require("./references");
 
 /**
@@ -15,6 +15,7 @@ function importYaml({
   encoding = "utf8",
   shouldFollowReferences = false,
   root = "./",
+  exportResult = false,
 } = {}) {
   return {
     name: "rollup-plugin-import-yaml",
@@ -43,6 +44,10 @@ function importYaml({
 
         if (isTS) {
           generateTypeFile(data, id, encoding);
+        }
+
+        if (shouldFollowReferences && exportResult) {
+          saveGeneratedYamlFile(id, transformedCode, encoding);
         }
 
         return {

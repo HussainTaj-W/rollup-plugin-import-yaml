@@ -108,8 +108,34 @@ function generateTypeFileFromYamlFile(
   generateTypeFile(data, yamlFile, encoding);
 }
 
+/**
+ * Save generated yaml file.
+ *
+ *
+ * @param {string} sourceFilePath
+ * @param {string} yamlFileContent
+ * @param {string} [encoding="utf8"]
+ * @example
+ * saveGeneratedYamlFile("data.yaml", "a: 1\nb: 2");
+ * //=> data.generated.yaml
+ * //=> a: 1
+ * //=> b: 2
+ */
+function saveGeneratedYamlFile(
+  sourceFilePath,
+  yamlFileContent,
+  encoding = "utf8"
+) {
+  const path = sourceFilePath.split(".").slice(0, -1).join(".");
+  const ext = sourceFilePath.split(".").at(-1);
+
+  const yamlFile = `${path}.generated.${ext}`;
+  fs.writeFileSync(yamlFile, yamlFileContent, encoding);
+}
+
 module.exports = {
   generateTypeScriptDeclaration,
   generateTypeFile,
   generateTypeFileFromYamlFile,
+  saveGeneratedYamlFile,
 };
